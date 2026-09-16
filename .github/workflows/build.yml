@@ -1,0 +1,56 @@
+name: Build Vidya Agent Android App
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'zulu'
+        java-version: '17'
+
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        channel: 'stable'
+        cache: true
+
+    - name: Recreate Android Project Scaffold
+      run: |
+        flutter create --org com.vidyaagent.bseb10th --project-name vidya_agent_bseb10th .
+
+    - name: Add Permissions to AndroidManifest
+      run: |
+        sed -i '/<application/i \    <uses-permission android:name="android.permission.INTERNET"/>\n    <uses-permission android:name="android.permission.CAMERA"/>' android/app/src/main/AndroidManifest.xml
+
+    - name: Get dependencies
+      run: flutter pub get
+
+    - name: Build Android App Bundle (AAB for Play Store)
+      run: flutter build appbundle --no-tree-shake-icons
+
+    - name: Build Android APK (for Direct Mobile Testing)
+      run: flutter build apk --release --no-tree-shake-icons
+
+    - name: Upload AAB Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: vidya-agent-appbundle
+        path: build/app/outputs/bundle/release/app-release.aab
+
+    - name: Upload APK Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: vidya-agent-apk
+        path: build/app/outputs/flutter-apk/app-release.apk
+        
