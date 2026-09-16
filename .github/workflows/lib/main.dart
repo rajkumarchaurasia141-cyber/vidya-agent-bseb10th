@@ -85,7 +85,7 @@ class _MainDashboardScreenState extends State<MainDashboardScreen> {
   }
 }
 
-// ---------------- 1. स्मार्ट नोट्स सेक्शन ----------------
+// ---------------- 1. स्मार्ट नोट्स ----------------
 class NotesSection extends StatelessWidget {
   const NotesSection({super.key});
 
@@ -103,7 +103,7 @@ class NotesSection extends StatelessWidget {
     {
       'title': 'अध्याय 1: रासायनिक अभिक्रियाएँ एवं समीकरण',
       'subject': 'विज्ञान (Science)',
-      'content': '• संयोजन अभिक्रिया: जब दो या दो से अधिक पदार्थ मिलकर एकल उत्पाद बनाते हैं।\n• वियोजन अभिक्रिया: एकल अभिकर्मक टूटकर छोटे-छोटे उत्पाद बनाता है।\n• विस्थापन एवं द्विविस्थापन अभिक्रियाएँ।\n• उपचयन (ऑक्सीजन की वृद्धि) एवं अपचयन (ऑक्सीजन का ह्रास)।'
+      'content': '• संयोजन अभिक्रिया: दो या दो से अधिक पदार्थ मिलकर एकल उत्पाद बनाते हैं।\n• वियोजन अभिक्रिया: एकल अभिकर्मक टूटकर छोटे-छोटे उत्पाद बनाता है।\n• उपचयन एवं अपचयन अभिक्रियाएँ।'
     },
   ];
 
@@ -141,7 +141,7 @@ class NotesSection extends StatelessWidget {
   }
 }
 
-// ---------------- 2. NCERT संपूर्ण हल सेक्शन ----------------
+// ---------------- 2. NCERT संपूर्ण हल ----------------
 class NcertSolutionsSection extends StatelessWidget {
   const NcertSolutionsSection({super.key});
 
@@ -149,12 +149,12 @@ class NcertSolutionsSection extends StatelessWidget {
     {
       'ex': 'प्रश्नावली 1.1 - प्रश्न 1',
       'q': 'यूक्लिड विभाजन एल्गोरिथ्म से 135 और 225 का HCF ज्ञात कीजिए।',
-      'sol': 'चरण 1: 225 > 135\n225 = 135 × 1 + 90 (शेषफल 90 ≠ 0)\n\nचरण 2: 135 और 90 के लिए:\n135 = 90 × 1 + 45 (शेषफल 45 ≠ 0)\n\nचरण 3: 90 और 45 के लिए:\n90 = 45 × 2 + 0 (शेषफल = 0)\n\nअतः, अंतिम भाजक 45 है।\nउत्तर: HCF(135, 225) = 45'
+      'sol': 'चरण 1: 225 > 135\n225 = 135 × 1 + 90 (शेषफल 90 ≠ 0)\n\nचरण 2: 135 और 90 के लिए:\n135 = 90 × 1 + 45 (शेषफल 45 ≠ 0)\n\nचरण 3: 90 और 45 के लिए:\n90 = 45 × 2 + 0 (शेषफल = 0)\n\nअतः अंतिम भाजक 45 है।\nउत्तर: HCF(135, 225) = 45'
     },
     {
       'ex': 'प्रश्नावली 1.3 - प्रश्न 1',
       'q': 'सिद्ध कीजिए कि √5 एक अपरिमेय संख्या है।',
-      'sol': 'माना √5 एक परिमेय संख्या है।\n√5 = a/b (जहाँ a और b सह-अभाज्य पूर्णांक हैं, b ≠ 0)\n\nदोनों पक्षों का वर्ग करने पर:\n5 = a² / b²  => a² = 5b²\nअतः a², 5 से विभाज्य है, इसलिए a भी 5 से विभाज्य होगा।\nमान लेते हैं a = 5c\n(5c)² = 5b² => 25c² = 5b² => b² = 5c²\nअतः b भी 5 से विभाज्य होगा।\n\nपरन्तु यह हमारी इस मान्यता का विरोध करता है कि a और b सह-अभाज्य हैं।\nअतः √5 एक अपरिमेय संख्या है।'
+      'sol': 'माना √5 एक परिमेय संख्या है।\n√5 = a/b (जहाँ a और b सह-अभाज्य पूर्णांक हैं, b ≠ 0)\n\nदोनों पक्षों का वर्ग करने पर:\n5 = a² / b²  => a² = 5b²\nअतः a², 5 से विभाज्य है, इसलिए a भी 5 से विभाज्य होगा।\nमान लेते हैं a = 5c\n(5c)² = 5b² => 25c² = 5b² => b² = 5c²\nअतः b भी 5 से विभाज्य होगा।\n\nपरन्तु यह हमारी मान्यता का विरोध करता है कि a और b सह-अभाज्य हैं।\nअतः सिद्ध हुआ कि √5 एक अपरिमेय संख्या है।'
     },
   ];
 
@@ -187,10 +187,7 @@ class NcertSolutionsSection extends StatelessWidget {
                 const Divider(height: 24),
                 const Text('समाधान (हल):', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.deepPurple)),
                 const SizedBox(height: 6),
-                SelectableText(
-                  item['sol']!,
-                  style: const TextStyle(fontSize: 15, height: 1.4),
-                ),
+                SelectableText(item['sol']!, style: const TextStyle(fontSize: 15, height: 1.4)),
               ],
             ),
           ),
@@ -200,7 +197,7 @@ class NcertSolutionsSection extends StatelessWidget {
   }
 }
 
-// ---------------- 3. पिछले 10 वर्ष PYQ सेक्शन ----------------
+// ---------------- 3. PYQ (10 वर्ष) ----------------
 class PyqSection extends StatelessWidget {
   const PyqSection({super.key});
 
@@ -215,13 +212,7 @@ class PyqSection extends StatelessWidget {
       'year': 'BSEB 2023 (वार्षिक)',
       'subject': 'विज्ञान (Science)',
       'q': 'अवतल दर्पण के मुख्य फोकस की परिभाषा लिखिए।',
-      'ans': 'उत्तर: मुख्य अक्ष के समांतर आने वाली प्रकाश की किरणें अवतल दर्पण से परावर्तन के पश्चात मुख्य अक्ष के जिस बिन्दु पर मिलती हैं, उसे अवतल दर्पण का मुख्य फोकस कहते हैं।'
-    },
-    {
-      'year': 'BSEB 2022 (वार्षिक)',
-      'subject': 'गणित (Maths)',
-      'q': 'बिन्दुओं (2, 3) और (4, 1) के बीच की दूरी ज्ञात कीजिए।',
-      'ans': 'उत्तर: d = √[(4-2)² + (1-3)²] = √[2² + (-2)²] = √[4 + 4] = √8 = 2√2 मात्रक'
+      'ans': 'उत्तर: मुख्य अक्ष के समांतर आने वाली प्रकाश किरणें परावर्तन के बाद जिस बिन्दु पर मिलती हैं, उसे मुख्य फोकस कहते हैं।'
     },
   ];
 
@@ -268,7 +259,7 @@ class PyqSection extends StatelessWidget {
   }
 }
 
-// ---------------- 4. ऑनलाइन टेस्ट सीरीज़ सेक्शन ----------------
+// ---------------- 4. ऑनलाइन टेस्ट सीरीज़ ----------------
 class TestSeriesSection extends StatefulWidget {
   const TestSeriesSection({super.key});
 
@@ -388,7 +379,7 @@ class _TestSeriesSectionState extends State<TestSeriesSection> {
   }
 }
 
-// ---------------- 5. विद्या AI एजेंट (डाउट सॉल्वर + कैमरा विज़न) ----------------
+// ---------------- 5. विद्या AI एजेंट ----------------
 class VidyaAiAgentSection extends StatefulWidget {
   const VidyaAiAgentSection({super.key});
 
@@ -401,7 +392,6 @@ class _VidyaAiAgentSectionState extends State<VidyaAiAgentSection> {
   final ImagePicker _picker = ImagePicker();
   File? _selectedImage;
 
-  // Active Gemini API Key
   final String _apiKey = 'AQ.Ab8RN6IA1m4s9fIKAcMVV0t3GQ6Q' + 'VtARTT-cmmZ9ti1jurd4dw';
 
   String _result = '';
